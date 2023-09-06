@@ -10,8 +10,12 @@ Par la suite, on revient au départ pour pouvoir recommencer.
 
 enum class state{state_0, state_1, state_2};
 bool isPressed = false;
+uint8_t off = 0;
+uint8_t red = 1;
+uint8_t green = 2;
 
-void changeState(state *current_state)
+
+void ChangeState(state *current_state)
 {
   switch (*current_state)
   {
@@ -24,9 +28,9 @@ void changeState(state *current_state)
     break;
 
   case state::state_2:
-    PORTA = 2;
+    PORTA = green;
     _delay_ms(2000);
-    PORTA = 0;
+    PORTA = off;
     *current_state = state::state_0;
     break;
   
@@ -49,12 +53,8 @@ int main()
     }
     if (isPressed)
     {
-      if (!(PIND & 0x04))
-      {
-        _delay_ms(10);
-        if (!(PIND & 0x00)) {isPressed = false; changeState(&current_state);}
-      }
-    }
+      if (!(PIND & 0x04)) {isPressed = false; ChangeState(&current_state);}
+    } 
   }
   return 0; 
 }
