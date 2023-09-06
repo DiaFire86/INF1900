@@ -1,0 +1,18 @@
+#define F_CPU 8000000
+#include <util/delay.h>
+#include <avr/io.h> 
+
+
+/*
+Quand la carte mère démarre, la DEL libre doit s'allumer en rouge. 
+Si le bouton-poussoir libre pour usage général est pesé, la DEL affiche la couleur ambre. 
+Quand le bouton-poussoir est relâché, la DEL devient verte. Si le bouton est de nouveau pesé, la DEL prend la couleur rouge encore. 
+Quand il est relâché, la DEL s'éteint. Si le bouton est de nouveau pesé, la DEL affiche la couleur verte. 
+Quand il est relâché, la DEL tourne au rouge ce qui fait que la carte mère est de retour à son état initial et tout peut recommencer.
+*/
+
+int main()
+{
+  
+  return 0; 
+}
