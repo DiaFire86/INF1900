@@ -1,3 +1,19 @@
+/*
+Authors: Ikram Arroud (2210444), Leo Martineau (2114043)
+INF1900
+Section 02
+TP-2, Pb-1
+*/
+
+//Program Description: 
+// This program displays a color and when the button is pressed, it fade away in 3 second then light up in the other color to do the same thing.
+// The color fade away in 3 second at 1 kHz.
+// DDRD is set as inputs for the button, whereas DDRA1 and DDRA2 are outputs for the LED, as we plugged the ports A0 and A1 to the double-LED pin:
+// The color green is displayed when PORTA0 is set to 1 and PORTA1 is set to 0.
+// Finally,to turn off the led, we set both PORTA0 and PORTA1 to 0.
+// We initialize the b and a at 1000 to have a ratio a/b starting at 1 and decreasing to 0 in 3 seconds.
+
+
 #define F_CPU 8000000UL
 #define BUTTON_DEBOUNCE_DELAY 10
 #define INTERRUPT_BUTTON_PIN 0x04
@@ -35,8 +51,9 @@ void setDark()
 int main()
 {
   
-  DDRA = 0xff;
-  int a = 0;
+  DDRA |= (1<<PORTA0)|(1<<PORTA1);
+  DDRD &= ~(1<<DDD2); // Dont know if useful
+  int a = 1000;
   int b = 1000;
   Color CurrentColor = RED;
 
